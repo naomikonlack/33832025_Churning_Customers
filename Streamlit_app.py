@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
-from tensorflow.keras.models import load_model
+from joblib import load
 
 # Load the saved components
 model = load_model('model.joblib')
