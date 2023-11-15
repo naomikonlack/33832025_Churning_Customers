@@ -8,7 +8,8 @@ from create_mlp_model import create_mlp_model
 from joblib import load
 
 # Load the saved components
-model = load('model.joblib')
+modelpath='model.joblib'
+model = joblib.load(modelpath)
 scaler = joblib.load( 'scaler (1).joblib')
 label_encoder = joblib.load('label_encoder.joblib')
 
