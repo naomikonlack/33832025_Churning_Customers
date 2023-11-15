@@ -9,7 +9,7 @@ from joblib import load
 
 # Load the saved components
 modelpath='model.joblib'
-with open(model_path, 'rb') as f:
+with open(modelpath, 'rb') as f:
     model= joblib.load(f)
 scaler = joblib.load( 'scaler (1).joblib')
 label_encoder = joblib.load('label_encoder.joblib')
