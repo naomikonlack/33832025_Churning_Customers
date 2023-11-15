@@ -3,4 +3,4 @@ scikit-learn
 numpy
 pandas
 tensorflow
-Keras==2.8.0
+Keras
