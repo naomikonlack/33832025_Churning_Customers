@@ -4,13 +4,10 @@ import numpy as np
 import joblib
 from tensorflow.keras.models import load_model
 
-# Define the path to the files
-base_path = "C:/Users/Lucie Konlack/OneDrive - Ashesi University/2ND YEAR SEMESTER 2 COURSES/INTRODUCTION TO AI/Assignment3/"
-
 # Load the saved components
-model = load_model(base_path + 'churn_model.h5')
-scaler = joblib.load(base_path + 'scaler (1).joblib')
-label_encoder = joblib.load(base_path + 'label_encoder.joblib')
+model = load_model('model.joblib')
+scaler = joblib.load( 'scaler (1).joblib')
+label_encoder = joblib.load('label_encoder.joblib')
 
 # Streamlit app title
 st.title('Customer Churn Prediction')
