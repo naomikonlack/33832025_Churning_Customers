@@ -8,7 +8,7 @@ from create_mlp_model import create_mlp_model
 from joblib import load
 
 # Load the saved components
-modelpath='new_model.joblib'
+modelpath='new_model.plk'
 with open(modelpath, 'rb') as f:
     model= pickle.load(f)
 scaler = joblib.load( 'scaler (1).joblib')
