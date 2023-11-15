@@ -1,8 +1,11 @@
-import joblib
 import streamlit as st
-import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+import tensorflow as tf
 import numpy as np
-from joblib import load
+import pickle
+import pandas as pd
+from create_model import create_model
+from joblib import load
 
 # Load the saved components
 model = load_model('model.joblib')
