@@ -1,4 +1,3 @@
-pip install protobuf
 streamlit
 scikit-learn
 numpy
