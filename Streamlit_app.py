@@ -5,7 +5,7 @@ import numpy as np
 import pickle
 import pandas as pd
 from create_model import create_model
-from joblib import load
+from joblib import load
 
 # Load the saved components
 model = load_model('model.joblib')
