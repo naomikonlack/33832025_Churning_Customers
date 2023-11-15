@@ -2,5 +2,5 @@ streamlit
 scikit-learn
 numpy
 pandas
-tensorflow==2.8.0
+tensorflow
 Keras==2.8.0
