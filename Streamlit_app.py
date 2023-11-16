@@ -16,6 +16,7 @@ with open(model_path, 'rb') as f:
     model = pickle.load(f)
 
 scaler = joblib.load( 'scaler (1).joblib')
+
 label_encoder = joblib.load('label_encoder.joblib')
 
 # Streamlit app title
@@ -59,7 +60,7 @@ if st.button('Predict Churn'):
     # Convert categorical variables using label encoding
     categorical_cols = ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines',
                         'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 
-                        'TechSupport', 'StreamingTV', 'StreamingMovies', 'PaperlessBilling']
+                        'TechSupport', 'StreamingTV', 'StreamingMovies', 'PaperlessBilling','PaymentMethod']
 
     for col in categorical_cols:
         input_data[col] = label_encoder.transform(input_data[col])
