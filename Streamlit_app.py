@@ -66,7 +66,7 @@ if st.button('Predict Churn'):
         input_data[col] = label_encoder.transform(input_data[col])
 
     # One-hot encode 'PaymentMethod' and 'Contract'
-    input_data = pd.get_dummies(input_data, columns=['PaymentMethod', 'Contract_Two year','Contract_Two year'])
+    input_data = pd.get_dummies(input_data, columns=['PaymentMethod', 'Contract_Two year','Contract_Month-to-month'])
 
     # Scaling
     input_data_scaled = scaler.transform(input_data)
