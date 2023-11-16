@@ -58,11 +58,11 @@ if st.button('Predict Churn'):
 
     # Process the inputs
     # Convert categorical variables using label encoding
-categorical_cols = ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines',
+    categorical_cols = ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines',
                         'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 
                         'TechSupport', 'StreamingTV', 'StreamingMovies', 'PaperlessBilling','PaymentMethod']
-for col in categorical_cols:
-    input_data[col] = label_encoder.transform(input_data[col])
+    for col in categorical_cols:
+        input_data[col] = label_encoder.transform(input_data[col])
 
     # One-hot encode 'PaymentMethod' and 'Contract'
     input_data = pd.get_dummies(input_data, columns=['PaymentMethod', 'Contract'])
