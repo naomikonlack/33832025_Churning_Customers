@@ -12,8 +12,12 @@ os.environ['PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION'] = 'python'
 # Load the saved components
 modelpath='new_model.plk'
 
+from tensorflow import keras
+
+# Load the Keras model from a pickled file
 with open(modelpath, 'rb') as f:
-    model= pickle.load(f)
+    model = pickle.load(f)
+
     
 scaler = joblib.load( 'scaler (1).joblib')
 label_encoder = joblib.load('label_encoder.joblib')
