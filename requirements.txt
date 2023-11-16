@@ -2,5 +2,5 @@ streamlit
 scikit-learn
 numpy
 pandas
-tensorflow==2.14.0
+tensorflow==2.8.1
 
