@@ -39,9 +39,8 @@ device_protection = st.selectbox('DeviceProtection', ['Yes', 'No', 'No internet 
 TechSupport = st.selectbox('TechSupport', ['Yes', 'No', 'No internet service'])
 StreamingMovies = st.selectbox('StreamingMovies', ['Yes', 'No', 'No internet service'])
 PaperlessBilling = st.selectbox('PaperlessBilling', ['Yes', 'No'])
-PaymentMethod_electronics= st.selectbox('PaymentMethod', ['Electronic check'])
-Contract_twoyear = st.selectbox('Contract_Two year', ['two-year'])
-Contract_Monthtomonth = st.selectbox('Contract_Month-to-month', ['Month-to-month'])
+PaymentMethod = st.selectbox('PaymentMethod', ['Electronic check'])
+Contract = st.selectbox('Contract', ['Month-to-month', 'Two year'])
 # Button to make prediction
 if st.button('Predict Churn'):
     # Create a DataFrame from the inputs
@@ -49,24 +48,22 @@ if st.button('Predict Churn'):
                                 partner, dependents, phone_service, multiple_lines, internet_service, 
                                 online_security, online_backup, device_protection, 
                                 TechSupport, StreamingMovies, PaperlessBilling, 
-                                PaymentMethod_Electronics , Contract_twoyear,Contract_Monthtomonth]],
-                              columns=[ 'tenure', 'MonthlyCharges', 'TotalCharges', 'gender', 'SeniorCitizen',
-       'Partner', 'Dependents', 'MultipleLines', 'InternetService',
-       'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
-       'StreamingMovies', 'PaperlessBilling', 'PaymentMethod_Electronic check',
-       'Contract_Month-to-month', 'Contract_Two year'])
-    # Process the inputs
+                                PaymentMethod, Contract]],
+                              columns=['tenure', 'MonthlyCharges', 'TotalCharges', 'gender', 'SeniorCitizen',
+                                       'Partner', 'Dependents', 'MultipleLines', 'InternetService',
+                                       'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
+                                       'StreamingMovies', 'PaperlessBilling', 'PaymentMethod',
+                                       'Contract'])
 
-  
     # Convert categorical variables using label encoding
     categorical_cols = ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines',
                         'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 
-                        'TechSupport', 'StreamingTV', 'StreamingMovies', 'PaperlessBilling']
+                        'TechSupport', 'StreamingMovies', 'PaperlessBilling']
+
     for col in categorical_cols:
         input_data[col] = label_encoder.transform(input_data[col])
-
     # One-hot encode 'PaymentMethod' and 'Contract'
-    input_data = pd.get_dummies(input_data, columns=['PaymentMethod', 'Contract_Two year','Contract_Month-to-month'])
+    input_data = pd.get_dummies(input_data, columns=['PaymentMethod', 'Contract'])
 
     # Scaling
     input_data_scaled = scaler.transform(input_data)
