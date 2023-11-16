@@ -3,7 +3,7 @@ from sklearn.preprocessing import LabelEncoder
 import tensorflow as tf
 import numpy as np
 import pickle
-from pickle import load
+
 import pandas as pd
 from create_mlp_model import create_mlp_model
 
@@ -14,8 +14,11 @@ os.environ['PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION'] = 'python'
 modelpath='new_leslie_model.plk'
 # Load the Keras model from a pickled file
 
-with open(modelpath, 'rb') as f:
-    model= pickle.load(f)
+from joblib import dump
+
+# Assuming 'model' is your Keras model
+dump(model, 'model.joblib')
+
 from joblib import load
 scaler = joblib.load( 'scaler (1).joblib')
 label_encoder = joblib.load('label_encoder.joblib')
