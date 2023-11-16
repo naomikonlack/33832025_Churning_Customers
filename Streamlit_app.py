@@ -16,7 +16,6 @@ modelpath='new_model.plk'
 # Load the Keras model from a pickled file
 model = load_model(modelpath)
 
-    
 scaler = joblib.load( 'scaler (1).joblib')
 label_encoder = joblib.load('label_encoder.joblib')
 
