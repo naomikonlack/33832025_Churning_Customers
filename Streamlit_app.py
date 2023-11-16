@@ -7,14 +7,16 @@ import pandas as pd
 from create_mlp_model import create_mlp_model
 from joblib import load
 from tensorflow import keras
-from tensorflow.keras.models import load_model
+
 import os
 os.environ['PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION'] = 'python'
 
 # Load the saved components
 modelpath='new_model.plk'
 # Load the Keras model from a pickled file
-model = load_model(modelpath)
+
+with open(modelpath, 'rb') as f:
+    model= pickle.load(f)
 
 scaler = joblib.load( 'scaler (1).joblib')
 label_encoder = joblib.load('label_encoder.joblib')
