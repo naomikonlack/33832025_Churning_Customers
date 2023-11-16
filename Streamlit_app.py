@@ -49,7 +49,7 @@ if st.button('Predict Churn'):
                                 partner, dependents, phone_service, multiple_lines, internet_service, 
                                 online_security, online_backup, device_protection, 
                                 TechSupport, StreamingMovies, PaperlessBilling, 
-                                PaymentMethod_Electronic check , Contract_twoyear,Contract_Monthtomonth]],
+                                PaymentMethod_Electronics , Contract_twoyear,Contract_Monthtomonth]],
                               columns=[ 'tenure', 'MonthlyCharges', 'TotalCharges', 'gender', 'SeniorCitizen',
        'Partner', 'Dependents', 'MultipleLines', 'InternetService',
        'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
