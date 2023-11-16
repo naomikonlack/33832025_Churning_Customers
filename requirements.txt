@@ -2,5 +2,5 @@ streamlit
 scikit-learn
 numpy
 pandas
-tensorflow
+tensorflow==2.14.0
 protobuf==3.18.0
