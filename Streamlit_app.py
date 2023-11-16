@@ -40,8 +40,8 @@ TechSupport = st.selectbox('TechSupport', ['Yes', 'No', 'No internet service'])
 StreamingMovies = st.selectbox('StreamingMovies', ['Yes', 'No', 'No internet service'])
 PaperlessBilling = st.selectbox('PaperlessBilling', ['Yes', 'No'])
 PaymentMethod_electronics= st.selectbox('PaymentMethod', ['Electronic check'])
-Contract_two year = st.selectbox('Contract_Two year', ['two-year'])
-Contract_Month-to-month = st.selectbox('Contract_Month-to-month', ['Month-to-month'])
+Contract_twoyear = st.selectbox('Contract_Two year', ['two-year'])
+Contract_Monthtomonth = st.selectbox('Contract_Month-to-month', ['Month-to-month'])
 # Button to make prediction
 if st.button('Predict Churn'):
     # Create a DataFrame from the inputs
@@ -49,7 +49,7 @@ if st.button('Predict Churn'):
                                 partner, dependents, phone_service, multiple_lines, internet_service, 
                                 online_security, online_backup, device_protection, 
                                 TechSupport, StreamingMovies, PaperlessBilling, 
-                                PaymentMethod_Electronic check , Contract_Two year, Contract_Month-to-month]],
+                                PaymentMethod_Electronic check , Contract_twoyear,Contract_Monthtomonth]],
                               columns=[ 'tenure', 'MonthlyCharges', 'TotalCharges', 'gender', 'SeniorCitizen',
        'Partner', 'Dependents', 'MultipleLines', 'InternetService',
        'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
