@@ -8,7 +8,7 @@ from create_mlp_model import create_mlp_model
 from joblib import load
 import os
 os.environ['PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION'] = 'python'
-
+from keras.utils import pickle_utils
 # Load the saved components
 modelpath='new_model.plk'
 
