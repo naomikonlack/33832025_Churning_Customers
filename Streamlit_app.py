@@ -15,8 +15,6 @@ model_path = 'new_leslie_model.plk'
 with open(model_path, 'rb') as f:
     model = pickle.load(f)
 
-
-
 scaler = joblib.load( 'scaler (1).joblib')
 label_encoder = joblib.load('label_encoder.joblib')
 
