@@ -1,5 +1,6 @@
 import streamlit as st
 import joblib
+import scikeras
 from sklearn.preprocessing import LabelEncoder
 import tensorflow as tf
 import numpy as np
