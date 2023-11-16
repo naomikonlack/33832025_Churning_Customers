@@ -36,9 +36,9 @@ internet_service = st.selectbox('Internet Service', ['DSL', 'Fiber optic', 'No']
 online_security = st.selectbox('Online Security', ['Yes', 'No', 'No internet service'])
 online_backup = st.selectbox('Online Backup', ['Yes', 'No', 'No internet service'])
 device_protection = st.selectbox('Device Protection', ['Yes', 'No', 'No internet service'])
-tech_support = st.selectbox('Tech Support', ['Yes', 'No', 'No internet service'])
-streaming_movies = st.selectbox('Streaming Movies', ['Yes', 'No', 'No internet service'])
-paperless_billing = st.selectbox('Paperless Billing', ['Yes', 'No'])
+TechSupport = st.selectbox('Tech Support', ['Yes', 'No', 'No internet service'])
+StreamingMovies = st.selectbox('Streaming Movies', ['Yes', 'No', 'No internet service'])
+PaperlessBilling = st.selectbox('Paperless Billing', ['Yes', 'No'])
 payment_method_2 = st.selectbox('Payment Method', ['Electronic check'])
 contract_0 = st.selectbox('Contract', ['Month-to-month'])
 contract_2 = st.selectbox('Contract', [ 'Two year'])
@@ -48,14 +48,13 @@ if st.button('Predict Churn'):
     input_data = pd.DataFrame([[tenure, monthly_charges, total_charges, gender, senior_citizen, 
                                 partner, dependents, phone_service, multiple_lines, internet_service, 
                                 online_security, online_backup, device_protection, 
-                                tech_support, streaming_tv, streaming_movies, paperless_billing, 
+                                TechSupport, StreamingMovies, PaperlessBilling, 
                                 payment_method_2, contract_0,contract_2]],
                               columns=['tenure', 'MonthlyCharges', 'TotalCharges', 'gender', 'SeniorCitizen',
                                        'Partner', 'Dependents', 'MultipleLines', 'InternetService',
                                        'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
                                        'StreamingTV', 'StreamingMovies', 'PaperlessBilling', 'PaymentMethod_2', 'Contract_0',
        'Contract_2'])
-
     # Process the inputs
 
     
