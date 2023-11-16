@@ -58,7 +58,7 @@ if st.button('Predict Churn'):
 
     # Process the inputs
     # Convert categorical variables using label encoding
-    categorical_cols = ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines',
+categorical_cols = ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines',
                         'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 
                         'TechSupport', 'StreamingTV', 'StreamingMovies', 'PaperlessBilling','PaymentMethod']
 for col in categorical_cols:
