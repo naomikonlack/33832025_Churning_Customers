@@ -63,7 +63,7 @@ if st.button('Predict Churn'):
     categorical_cols = ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines',
                         'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 
                         'TechSupport', 'StreamingTV', 'StreamingMovies', 'PaperlessBilling','PaymentMethod_2', 'Contract_0',
-       'Contract_2']]
+       'Contract_2']
     for col in categorical_cols:
         input_data[col] = label_encoder.transform(input_data[col])
 
