@@ -4,4 +4,4 @@ numpy
 pandas
 tensorflow==2.12.0
 keras==2.12.0
-scikeras
+scikeras==0.12.0
