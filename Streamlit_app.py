@@ -1,4 +1,5 @@
 import streamlit as st
+import joblib
 from sklearn.preprocessing import LabelEncoder
 import tensorflow as tf
 import numpy as np
@@ -15,7 +16,6 @@ modelpath='model.joblib'
 
 model = joblib.load(modelpath)
 
-from joblib import load
 scaler = joblib.load( 'scaler (1).joblib')
 label_encoder = joblib.load('label_encoder.joblib')
 
