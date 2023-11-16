@@ -3,3 +3,4 @@ scikit-learn
 numpy
 pandas
 tensorflow==2.8.1
+keras==2.8.1
