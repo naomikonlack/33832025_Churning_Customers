@@ -13,7 +13,7 @@ import os
 os.environ['PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION'] = 'python'
 
 # Load the saved components
-modelpath='new_model.plk'
+
 # Load the Keras model from a pickled file
 
 with open(modelpath, 'rb') as f:
