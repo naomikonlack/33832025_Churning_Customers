@@ -11,7 +11,7 @@ from tensorflow import keras
 import os
 os.environ['PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION'] = 'python'
 
-model_path = 'new_leslie_model.plk'
+model_path = 'new_leslie_modell.plk'
 with open(model_path, 'rb') as f:
     model = pickle.load(f)
 
@@ -39,8 +39,9 @@ device_protection = st.selectbox('DeviceProtection', ['Yes', 'No', 'No internet 
 TechSupport = st.selectbox('TechSupport', ['Yes', 'No', 'No internet service'])
 StreamingMovies = st.selectbox('StreamingMovies', ['Yes', 'No', 'No internet service'])
 PaperlessBilling = st.selectbox('PaperlessBilling', ['Yes', 'No'])
-PaymentMethod= st.selectbox('PaymentMethod', ['Electronic check'])
-Contract = st.selectbox('Contract', ['Month-to-month'])
+PaymentMethod_electronics= st.selectbox('PaymentMethod', ['Electronic check'])
+Contract_two year = st.selectbox('Contract_Two year', ['two-year'])
+Contract_Month-to-month = st.selectbox('Contract_Month-to-month', ['Month-to-month'])
 # Button to make prediction
 if st.button('Predict Churn'):
     # Create a DataFrame from the inputs
@@ -48,14 +49,15 @@ if st.button('Predict Churn'):
                                 partner, dependents, phone_service, multiple_lines, internet_service, 
                                 online_security, online_backup, device_protection, 
                                 TechSupport, StreamingMovies, PaperlessBilling, 
-                                PaymentMethod_Electronic check , Contract_Two year,Contract_Month-to-month]],
-                              columns=['tenure', 'MonthlyCharges', 'TotalCharges', 'gender', 'SeniorCitizen',
+                                PaymentMethod_Electronic check , Contract_Two year, Contract_Month-to-month]],
+                              columns=[ 'tenure', 'MonthlyCharges', 'TotalCharges', 'gender', 'SeniorCitizen',
        'Partner', 'Dependents', 'MultipleLines', 'InternetService',
        'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
-       'StreamingMovies', 'PaperlessBilling', 'PaymentMethod','Contract'])
+       'StreamingMovies', 'PaperlessBilling', 'PaymentMethod_Electronic check',
+       'Contract_Month-to-month', 'Contract_Two year'])
     # Process the inputs
 
-   
+  
     # Convert categorical variables using label encoding
     categorical_cols = ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines',
                         'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 
@@ -64,7 +66,7 @@ if st.button('Predict Churn'):
         input_data[col] = label_encoder.transform(input_data[col])
 
     # One-hot encode 'PaymentMethod' and 'Contract'
-    input_data = pd.get_dummies(input_data, columns=['PaymentMethod', 'Contract'])
+    input_data = pd.get_dummies(input_data, columns=['PaymentMethod', 'Contract_Two year','Contract_Two year'])
 
     # Scaling
     input_data_scaled = scaler.transform(input_data)
