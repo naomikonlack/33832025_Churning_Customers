@@ -11,7 +11,7 @@ from tensorflow import keras
 import os
 os.environ['PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION'] = 'python'
 
-model_path = 'final_best_model.plk'
+model_path = 'new_leslie_model.plk'
 with open(model_path, 'rb') as f:
     model = pickle.load(f)
 
