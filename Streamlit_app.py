@@ -3,6 +3,7 @@ from sklearn.preprocessing import LabelEncoder
 import tensorflow as tf
 import numpy as np
 import pickle
+from pickle import load
 import pandas as pd
 from create_mlp_model import create_mlp_model
 from joblib import load
