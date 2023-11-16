@@ -50,7 +50,7 @@ if st.button('Predict Churn'):
                                 TechSupport, StreamingMovies, PaperlessBilling, 
                                 PaymentMethod, Contract]],
                               columns=['tenure', 'MonthlyCharges', 'TotalCharges', 'gender', 'SeniorCitizen',
-                                       'Partner', 'Dependents', 'MultipleLines', 'InternetService',
+                                       'Partner', 'Dependents','PhoneService', 'MultipleLines', 'InternetService',
                                        'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
                                        'StreamingMovies', 'PaperlessBilling', 'PaymentMethod',
                                        'Contract'])
