@@ -11,11 +11,12 @@ from tensorflow import keras
 import os
 os.environ['PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION'] = 'python'
 
-# Load the saved components
-modelpath='model.joblib'
-# Load the Keras model from a pickled file
+model_path = 'final_best_model.plk'
 
-model = joblib.load(modelpath)
+
+with open(model_path, 'rb') as f:
+    best_model= pickle.load(f)
+
 
 scaler = joblib.load( 'scaler (1).joblib')
 label_encoder = joblib.load('label_encoder.joblib')
