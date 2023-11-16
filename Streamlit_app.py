@@ -5,7 +5,7 @@ import tensorflow as tf
 import numpy as np
 import pickle
 import pandas as pd
-from create_mlp_model import create_model_mlp
+from create_mlp_model import create_mlp_model
 from joblib import load
 from tensorflow import keras
 import os
