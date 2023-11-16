@@ -7,6 +7,7 @@ import pickle
 import pandas as pd
 from create_mlp_model import create_mlp_model
 from joblib import load
+from tensorflow import keras
 import os
 os.environ['PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION'] = 'python'
 
