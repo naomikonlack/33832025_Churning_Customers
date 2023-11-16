@@ -6,7 +6,6 @@ import pickle
 from pickle import load
 import pandas as pd
 from create_mlp_model import create_mlp_model
-from joblib import load
 
 import os
 os.environ['PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION'] = 'python'
@@ -17,7 +16,7 @@ modelpath='new_leslie_model.plk'
 
 with open(modelpath, 'rb') as f:
     model= pickle.load(f)
-
+from joblib import load
 scaler = joblib.load( 'scaler (1).joblib')
 label_encoder = joblib.load('label_encoder.joblib')
 
