@@ -46,22 +46,6 @@ contract = st.selectbox('Contract', ['Month-to-month', 'One year', 'Two year'])
 
 # Button to make prediction
 if st.button('Predict Churn'):
-    # Create a DataFrame from the inputs
-    input_df = pd.DataFrame([[tenure, monthly_charges, total_charges, gender, senior_citizen, 
-                              partner, dependents, phone_service, multiple_lines, internet_service, 
-                              online_security, online_backup, device_protection, 
-                              tech_support, streaming_tv, streaming_movies, paperless_billing, 
-                              payment_method, contract]],
-                            columns=['tenure', 'MonthlyCharges', 'TotalCharges', 'gender', 'SeniorCitizen',
-                                     'Partner', 'Dependents','PhoneService', 'MultipleLines', 'InternetService',
-                                     'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
-                                     'StreamingTV', 'StreamingMovies', 'PaperlessBilling', 'PaymentMethod', 'Contract'])
-
-    # Convert 'TotalCharges' to numeric
-    input_df['TotalCharges'] = pd.to_numeric(input_df['TotalCharges'], errors='coerce')
-
-    # Map 'SeniorCitizen' from 'Yes/No' to 1/0
-    input_df['SeniorCitizen'] = input_df['SeniorCitizen'].map({'Yes': 1, 'No': 0})
 
     # Apply label encoding to categorical variables
     categorical_cols = ['gender', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines',
@@ -69,16 +53,37 @@ if st.button('Predict Churn'):
                         'TechSupport', 'StreamingTV', 'StreamingMovies', 'PaperlessBilling']
 
     categorical_features_encoded = label_encoder.fit_transform(categorical_cols) 
-
+    numerical_columns= = {
+            'PaymentMethod': [payment_method],
+            'Contract': [contract]
+        }
+        df = pd.DataFrame(data)
     # One-hot encode 'PaymentMethod' and 'Contract'
-    input_df = pd.get_dummies(input_df, columns=['PaymentMethod', 'Contract'])
+    input_df = pd.get_dummies(df, columns=['PaymentMethod', 'Contract'])
 
-    # Apply scaling
-    input_data_scaled = scaler.transform(input_df)
+     flattened_encoded_df = encoded_df.values.flatten()
 
-    # Make prediction
-    prediction = model.predict(input_data_scaled)
-    churn_probability = prediction[0][0]
+        input_features = np.concatenate([
+            np.array([senior_citizen, tenure, monthly_charges, total_charges, *categorical_features_encoded]),
+            flattened_encoded_df
+        ]).reshape(1, -1)
 
-    # Display the prediction
-    st.write(f'Churn Probability: {churn_probability}')
+        # Scale the input features
+        input_features_scaled = scaler.transform(input_features)
+
+        # Make predictions
+        prediction = model.predict(input_features_scaled)
+
+        label_mapping = {1: 'Yes', 0: 'No'}
+
+        predicted_churn_label =int(prediction[0])
+        # Map the predicted label using the dictionary
+        predicted_churn = label_mapping[predicted_churn_label]
+        # Display the prediction
+        st.write(f"Predicted Churn: {predicted_churn}") 
+        auc = best_model.auc  # Replace 'auc' with the attribute name containing the AUC
+        st.write(f"Model AUC: {auc}")
+        st.write(f"Model's Accuracy: {content}") 
+        
+if __name__ == "__main__":
+    main()
