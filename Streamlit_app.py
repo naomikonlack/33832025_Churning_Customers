@@ -61,29 +61,27 @@ if st.button('Predict Churn'):
     # One-hot encode 'PaymentMethod' and 'Contract'
     input_df = pd.get_dummies(df, columns=['PaymentMethod', 'Contract'])
 
-     flattened_encoded_df = encoded_df.values.flatten()
+    flattened_encoded_df = encoded_df.values.flatten()
 
-        input_features = np.concatenate([
+    input_features = np.concatenate([
             np.array([senior_citizen, tenure, monthly_charges, total_charges, *categorical_features_encoded]),
             flattened_encoded_df
         ]).reshape(1, -1)
 
         # Scale the input features
-        input_features_scaled = scaler.transform(input_features)
+    input_features_scaled = scaler.transform(input_features)
 
         # Make predictions
-        prediction = model.predict(input_features_scaled)
+    prediction = model.predict(input_features_scaled)
 
-        label_mapping = {1: 'Yes', 0: 'No'}
+    label_mapping = {1: 'Yes', 0: 'No'}
 
-        predicted_churn_label =int(prediction[0])
+    predicted_churn_label =int(prediction[0])
         # Map the predicted label using the dictionary
-        predicted_churn = label_mapping[predicted_churn_label]
+    predicted_churn = label_mapping[predicted_churn_label]
         # Display the prediction
-        st.write(f"Predicted Churn: {predicted_churn}") 
-        auc = best_model.auc  # Replace 'auc' with the attribute name containing the AUC
-        st.write(f"Model AUC: {auc}")
-        st.write(f"Model's Accuracy: {content}") 
+    st.write(f"Predicted Churn: {predicted_churn}") 
+   
         
 if __name__ == "__main__":
     main()
