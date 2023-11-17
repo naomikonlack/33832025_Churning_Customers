@@ -68,8 +68,7 @@ if st.button('Predict Churn'):
                         'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 
                         'TechSupport', 'StreamingTV', 'StreamingMovies', 'PaperlessBilling']
 
-    for col in categorical_cols:
-        input_df[col] = label_encoder.transform(input_df[col])
+    categorical_features_encoded = label_encoder.fit_transform(categorical_cols) 
 
     # One-hot encode 'PaymentMethod' and 'Contract'
     input_df = pd.get_dummies(input_df, columns=['PaymentMethod', 'Contract'])
