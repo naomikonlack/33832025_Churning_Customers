@@ -19,6 +19,7 @@ scaler = joblib.load( 'scaler (1).joblib')
 
 label_encoder = joblib.load('label_encoder.joblib')
 
+
 # Streamlit app title
 st.title('Customer Churn Prediction')
 
@@ -26,7 +27,7 @@ st.title('Customer Churn Prediction')
 tenure = st.number_input('Tenure', min_value=0)
 monthly_charges = st.number_input('Monthly Charges', min_value=0.0, format='%f')
 total_charges = st.number_input('Total Charges', min_value=0.0, format='%f')
-gender = st.selectbox('Gender', ['Male', 'Female'])
+gender = st.selectbox('Gender', ['Female', 'Male'])
 senior_citizen = st.selectbox('Senior Citizen', ['Yes', 'No'])
 partner = st.selectbox('Partner', ['Yes', 'No'])
 dependents = st.selectbox('Dependents', ['Yes', 'No'])
@@ -37,10 +38,11 @@ online_security = st.selectbox('OnlineSecurity', ['Yes', 'No', 'No internet serv
 online_backup = st.selectbox('OnlineBackup', ['Yes', 'No', 'No internet service'])
 device_protection = st.selectbox('DeviceProtection', ['Yes', 'No', 'No internet service'])
 tech_support = st.selectbox('TechSupport', ['Yes', 'No', 'No internet service'])
+streaming_tv = st.selectbox('StreamingTV', ['Yes', 'No', 'No internet service']) # Added based on your dataset
 streaming_movies = st.selectbox('StreamingMovies', ['Yes', 'No', 'No internet service'])
 paperless_billing = st.selectbox('PaperlessBilling', ['Yes', 'No'])
-payment_method = st.selectbox('PaymentMethod', ['Electronic check', 'Other'])
-contract = st.selectbox('Contract', ['Month-to-month', 'Two year', 'One year'])
+payment_method = st.selectbox('PaymentMethod', ['Electronic check', 'Mailed check', 'Bank transfer (automatic)', 'Credit card (automatic)'])
+contract = st.selectbox('Contract', ['Month-to-month', 'One year', 'Two year'])
 
 # Button to make prediction
 if st.button('Predict Churn'):
@@ -48,20 +50,23 @@ if st.button('Predict Churn'):
     input_df = pd.DataFrame([[tenure, monthly_charges, total_charges, gender, senior_citizen, 
                               partner, dependents, phone_service, multiple_lines, internet_service, 
                               online_security, online_backup, device_protection, 
-                              tech_support, streaming_movies, paperless_billing, 
+                              tech_support, streaming_tv, streaming_movies, paperless_billing, 
                               payment_method, contract]],
                             columns=['tenure', 'MonthlyCharges', 'TotalCharges', 'gender', 'SeniorCitizen',
                                      'Partner', 'Dependents','PhoneService', 'MultipleLines', 'InternetService',
                                      'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
-                                     'StreamingMovies', 'PaperlessBilling', 'PaymentMethod', 'Contract'])
+                                     'StreamingTV', 'StreamingMovies', 'PaperlessBilling', 'PaymentMethod', 'Contract'])
 
     # Convert 'TotalCharges' to numeric
     input_df['TotalCharges'] = pd.to_numeric(input_df['TotalCharges'], errors='coerce')
 
+    # Map 'SeniorCitizen' from 'Yes/No' to 1/0
+    input_df['SeniorCitizen'] = input_df['SeniorCitizen'].map({'Yes': 1, 'No': 0})
+
     # Apply label encoding to categorical variables
-    categorical_cols = ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines',
+    categorical_cols = ['gender', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines',
                         'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 
-                        'TechSupport', 'StreamingMovies', 'PaperlessBilling']
+                        'TechSupport', 'StreamingTV', 'StreamingMovies', 'PaperlessBilling']
 
     for col in categorical_cols:
         input_df[col] = label_encoder.transform(input_df[col])
