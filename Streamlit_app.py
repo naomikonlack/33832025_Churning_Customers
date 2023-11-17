@@ -36,37 +36,41 @@ internet_service = st.selectbox('InternetService', ['DSL', 'Fiber optic', 'No'])
 online_security = st.selectbox('OnlineSecurity', ['Yes', 'No', 'No internet service'])
 online_backup = st.selectbox('OnlineBackup', ['Yes', 'No', 'No internet service'])
 device_protection = st.selectbox('DeviceProtection', ['Yes', 'No', 'No internet service'])
-TechSupport = st.selectbox('TechSupport', ['Yes', 'No', 'No internet service'])
-StreamingMovies = st.selectbox('StreamingMovies', ['Yes', 'No', 'No internet service'])
-PaperlessBilling = st.selectbox('PaperlessBilling', ['Yes', 'No'])
-PaymentMethod = st.selectbox('PaymentMethod', ['Electronic check'])
-Contract = st.selectbox('Contract', ['Month-to-month', 'Two year'])
+tech_support = st.selectbox('TechSupport', ['Yes', 'No', 'No internet service'])
+streaming_movies = st.selectbox('StreamingMovies', ['Yes', 'No', 'No internet service'])
+paperless_billing = st.selectbox('PaperlessBilling', ['Yes', 'No'])
+payment_method = st.selectbox('PaymentMethod', ['Electronic check', 'Other'])
+contract = st.selectbox('Contract', ['Month-to-month', 'Two year', 'One year'])
+
 # Button to make prediction
 if st.button('Predict Churn'):
     # Create a DataFrame from the inputs
-    input_data = pd.DataFrame([[tenure, monthly_charges, total_charges, gender, senior_citizen, 
-                                partner, dependents, phone_service, multiple_lines, internet_service, 
-                                online_security, online_backup, device_protection, 
-                                TechSupport, StreamingMovies, PaperlessBilling, 
-                                PaymentMethod, Contract]],
-                              columns=['tenure', 'MonthlyCharges', 'TotalCharges', 'gender', 'SeniorCitizen',
-                                       'Partner', 'Dependents','PhoneService', 'MultipleLines', 'InternetService',
-                                       'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
-                                       'StreamingMovies', 'PaperlessBilling', 'PaymentMethod',
-                                       'Contract'])
+    input_df = pd.DataFrame([[tenure, monthly_charges, total_charges, gender, senior_citizen, 
+                              partner, dependents, phone_service, multiple_lines, internet_service, 
+                              online_security, online_backup, device_protection, 
+                              tech_support, streaming_movies, paperless_billing, 
+                              payment_method, contract]],
+                            columns=['tenure', 'MonthlyCharges', 'TotalCharges', 'gender', 'SeniorCitizen',
+                                     'Partner', 'Dependents','PhoneService', 'MultipleLines', 'InternetService',
+                                     'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport',
+                                     'StreamingMovies', 'PaperlessBilling', 'PaymentMethod', 'Contract'])
 
-    # Convert categorical variables using label encoding
+    # Convert 'TotalCharges' to numeric
+    input_df['TotalCharges'] = pd.to_numeric(input_df['TotalCharges'], errors='coerce')
+
+    # Apply label encoding to categorical variables
     categorical_cols = ['gender', 'SeniorCitizen', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines',
                         'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 
                         'TechSupport', 'StreamingMovies', 'PaperlessBilling']
 
     for col in categorical_cols:
-        input_data[col] = label_encoder.fit_transform(input_data[col])
-    # One-hot encode 'PaymentMethod' and 'Contract'
-    input_data = pd.get_dummies(input_data, columns=['PaymentMethod', 'Contract'])
+        input_df[col] = label_encoder.transform(input_df[col])
 
-    # Scaling
-    input_data_scaled = scaler.transform(input_data)
+    # One-hot encode 'PaymentMethod' and 'Contract'
+    input_df = pd.get_dummies(input_df, columns=['PaymentMethod', 'Contract'])
+
+    # Apply scaling
+    input_data_scaled = scaler.transform(input_df)
 
     # Make prediction
     prediction = model.predict(input_data_scaled)
