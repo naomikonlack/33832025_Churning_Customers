@@ -48,7 +48,7 @@ def main():
     if st.button('Predict Churn'):
     
         # Apply label encoding to categorical variables
-        categorical_cols = ['gender', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines',
+        categorical_cols = ['gender', 'Partner', 'Dependents', 'SeniorCitizen','PhoneService', 'MultipleLines',
                             'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 
                             'TechSupport', 'StreamingTV', 'StreamingMovies', 'PaperlessBilling']
     
@@ -61,10 +61,9 @@ def main():
         # One-hot encode 'PaymentMethod' and 'Contract'
         input_df = pd.get_dummies(df, columns=['PaymentMethod', 'Contract'])
     
-        flattened_encoded_df =input_df.values.flatten()
     
         input_features = np.concatenate([
-                np.array([senior_citizen, tenure, monthly_charges, total_charges, *categorical_features_encoded]),
+                np.array([ tenure, monthly_charges, total_charges, *categorical_features_encoded]),
                 flattened_encoded_df
             ]).reshape(1, -1)
     
