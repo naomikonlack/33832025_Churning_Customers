@@ -53,7 +53,7 @@ if st.button('Predict Churn'):
                         'TechSupport', 'StreamingTV', 'StreamingMovies', 'PaperlessBilling']
 
     categorical_features_encoded = label_encoder.fit_transform(categorical_cols) 
-    numerical_columns= = {
+    numerical_columns= {
             'PaymentMethod': [payment_method],
             'Contract': [contract]
         }
