@@ -61,7 +61,7 @@ def main():
         # One-hot encode 'PaymentMethod' and 'Contract'
         input_df = pd.get_dummies(df, columns=['PaymentMethod', 'Contract'])
     
-        flattened_encoded_df = encoded_df.values.flatten()
+        flattened_encoded_df =input_df.values.flatten()
     
         input_features = np.concatenate([
                 np.array([senior_citizen, tenure, monthly_charges, total_charges, *categorical_features_encoded]),
