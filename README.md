@@ -2,6 +2,7 @@
 Telecom Customer Churn Prediction Model by Leslie Konlack
 
 Overview
+
 In this project, my focus was on the critical issue of customer churn in the telecom industry.
 I aimed to develop a deep learning-based predictive model to help telecom operators identify customers at high risk of churn. 
 The model is designed to enable proactive strategies for improving customer retention.
