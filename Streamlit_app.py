@@ -57,7 +57,7 @@ def main():
                 'PaymentMethod': [payment_method],
                 'Contract': [contract]
             }
-        df = pd.DataFrame(data)
+        df = pd.DataFrame(numerical_columns)
         # One-hot encode 'PaymentMethod' and 'Contract'
         input_df = pd.get_dummies(df, columns=['PaymentMethod', 'Contract'])
     
