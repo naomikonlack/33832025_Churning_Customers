@@ -31,7 +31,6 @@ def main():
     senior_citizen = st.selectbox('Senior Citizen', ['Yes', 'No'])
     partner = st.selectbox('Partner', ['Yes', 'No'])
     dependents = st.selectbox('Dependents', ['Yes', 'No'])
-    phone_service = st.selectbox('PhoneService', ['Yes', 'No'])
     multiple_lines = st.selectbox('MultipleLines', ['Yes', 'No', 'No phone service'])
     internet_service = st.selectbox('InternetService', ['DSL', 'Fiber optic', 'No'])
     online_security = st.selectbox('OnlineSecurity', ['Yes', 'No', 'No internet service'])
@@ -48,7 +47,7 @@ def main():
     if st.button('Predict Churn'):
     
         # Apply label encoding to categorical variables
-        categorical_cols = ['gender', 'Partner', 'Dependents', 'SeniorCitizen','PhoneService', 'MultipleLines',
+        categorical_cols = ['gender', 'Partner', 'Dependents', 'SeniorCitizen', 'MultipleLines',
                             'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 
                             'TechSupport', 'StreamingTV', 'StreamingMovies', 'PaperlessBilling']
     
