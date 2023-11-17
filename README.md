@@ -68,5 +68,7 @@ Dataset
 The dataset used for this project provides a comprehensive view of customer behavior in the telecom industry. 
 Dataset Link: https://drive.google.com/file/d/1deqC-VzcKNvTIrGcXO3nGEfJ5_Gzyl0S/view
 
+Link to my youtube video demonstration of my Streamlit app: https://youtu.be/VDxhrH-HX-g
+
 
 
