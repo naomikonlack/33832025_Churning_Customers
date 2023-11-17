@@ -53,7 +53,7 @@ Execute streamlit run app.py in the terminal to start the application locally.
 -Web Access
 
 Access the application directly through Your Streamlit Web App Link, hosted online for ease of use. 
-App limk: https://33832025churningcustomers-d9sufr9fuxfpxsq5i9lkms.streamlit.app
+Streamlit Web App Link: https://33832025churningcustomers-d9sufr9fuxfpxsq5i9lkms.streamlit.app
 
 How to Use the Application
 
