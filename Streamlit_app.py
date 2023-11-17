@@ -19,7 +19,8 @@ scaler = joblib.load( 'scaler (1).joblib')
 
 label_encoder = joblib.load('label_encoder.joblib')
 
-
+with open('acc.txt', 'r') as file:
+    Accuracy = file.read()
 # Streamlit app title
 st.title('Customer Churn Prediction')
 def main():
@@ -78,7 +79,8 @@ def main():
             # Map the predicted label using the dictionary
         predicted_churn = label_mapping[predicted_churn_label]
             # Display the prediction
-        st.write(f"Predicted Churn: {predicted_churn}") 
+        st.write(f"Predicted Churn: {predicted_churn}")
+        st.write(f"Model's Accuracy: {Accuracy}") 
        
         
 if __name__ == "__main__":
