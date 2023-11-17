@@ -30,6 +30,8 @@ I meticulously tuned the model parameters to balance accuracy and computational 
 I adopted a thorough approach to evaluate the model's performance. 
 This included not just assessing the accuracy but also calculating the AUC score to validate the model's proficiency in distinguishing potential churners.
 
+MyGoogleCollabfilelink: https://colab.research.google.com/drive/15Riizqljg-LINqMZHIZ3_f4w0N5oKx3H#scrollTo=REcMBm0N6zXW
+
 -Application Development with Streamlit
 
 To host the model, I developed an interactive web application using Streamlit. 
